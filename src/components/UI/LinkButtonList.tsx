@@ -1,21 +1,35 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { LinkButtonListProps } from '../../models/types';
+import { device } from '../../theme/theme';
 import ResumeButton from '../ResumeButton';
 import LinkButton from './LinkButton';
 
 const StyledList = styled.ul`
-  display: flex;
+  display: none;
   list-style-type: none;
   margin-top: 1rem;
+
+  @media (min-width: 400px) {
+    display: flex;
+    flex-direction: row;
+  }
 `;
 
 const StyledListItem = styled.li`
-  margin-right: 1rem;
+  margin-right: 0.2rem;
+
+  @media ${device.mobileL} {
+    margin-right: 0.5rem;
+  }
+
+  @media ${device.mobileXL} {
+    margin-right: 1rem;
+  }
 `;
 
-const LinkButtonList = ({ array }: LinkButtonListProps) => {
-  const linkButtonArray = array.map((item) => (
+const LinkButtonList = ({ contextType, linksArray }: LinkButtonListProps) => {
+  const linkButtonArray = linksArray.map((item) => (
     <StyledListItem key={item.button_label}>
       <LinkButton href={item.button_link.url}>{item.button_label}</LinkButton>
     </StyledListItem>
@@ -24,7 +38,7 @@ const LinkButtonList = ({ array }: LinkButtonListProps) => {
   return (
     <StyledList>
       {linkButtonArray}
-      <ResumeButton />
+      <ResumeButton contextType={contextType} />
     </StyledList>
   );
 };

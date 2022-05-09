@@ -7,7 +7,7 @@ import BackgroundImage from 'gatsby-background-image';
 const Background = ({ children }: HOCProps) => {
   const data = useStaticQuery(graphql`
     query {
-      backgroundImage: file(relativePath: { eq: "background.png" }) {
+      backgroundImage: file(relativePath: { eq: "images/background.png" }) {
         childImageSharp {
           fluid(maxWidth: 3000, quality: 100) {
             ...GatsbyImageSharpFluid
@@ -36,12 +36,8 @@ const Background = ({ children }: HOCProps) => {
 const StyledBackground = styled(Background)`
   background-repeat: repeat-y;
   background-size: contain;
-
-  &:before,
-  &:after {
-    background-repeat: repeat-y;
-    background-size: contain;
-  }
+  max-width: 100vw;
+  overflow: hidden;
 `;
 
 export default StyledBackground;

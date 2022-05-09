@@ -6,11 +6,13 @@ import SocialList from './SocialList';
 const StyledFooter = styled.footer`
   align-items: center;
   background-color: ${(props) => props.theme.uiBackground};
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 `;
 
 const Footer = () => {
@@ -55,6 +57,7 @@ const Footer = () => {
         linkedIn={linkedInUrl}
         gitHub={gitHubUrl}
         showEmail
+        contextType="nav"
         isWhite
       />
     </StyledFooter>

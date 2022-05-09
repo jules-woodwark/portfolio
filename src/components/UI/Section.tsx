@@ -1,26 +1,37 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import { device } from '../../theme/theme';
 import { SectionProps } from '../../models/types';
+import styled from 'styled-components';
 
 const StyledSection = styled.section<SectionProps>`
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 10rem 0;
-  font-weight: 600;
+  margin: 4rem 0;
+  font-weight: ${(props) => props.theme.fontWeight};
 
-  ${(props) => props.isHero && `
+  ${(props) =>
+    props.isHero &&
+    `
     height: 100vh;
     margin: 0;
-    margin-top: -3rem;
+
+    @media ${device.mobileXL} {
+      margin-top: -3rem;
+    }
   `}
 
+  ${(props) =>
+    props.isResume &&
+    `
+    margin: 0;
+`}
 `;
 
-const Section = ({ children, isHero }: SectionProps) => {
+const Section = ({ children, isHero, isResume, id }: SectionProps) => {
   return (
-    <StyledSection isHero={isHero}>
+    <StyledSection id={id} isHero={isHero} isResume={isResume}>
       {children}
     </StyledSection>
   );

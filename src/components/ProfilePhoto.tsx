@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { ProfilePhotoProps } from '../../models/types';
+import { ProfilePhotoProps } from '../models/types';
 
 const StyledGatsbyImage = styled(GatsbyImage)`
   border-radius: 0.5rem;

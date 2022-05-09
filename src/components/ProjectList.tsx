@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ProjectListPropTypes } from '../../models/types';
+import { ProjectListPropTypes } from '../models/types';
 import ProjectItem from './ProjectItem';
 
 const ProjectList = ({ projectsArray }: ProjectListPropTypes) => {

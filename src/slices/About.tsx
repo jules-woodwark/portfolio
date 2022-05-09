@@ -8,7 +8,7 @@ const About = ({ slice }: SliceProps) => {
   const { about_title, about_description } = slice.primary;
   
   return (
-    <Section>
+    <Section id="about">
       <Heading type="articleTitle" field={about_title.richText} />
       <PrismicRichText field={about_description.richText} />
     </Section>

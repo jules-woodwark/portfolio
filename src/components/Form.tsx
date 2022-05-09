@@ -1,25 +1,66 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { validationSchema } from '../../models/validationSchema';
-import { encode } from '../../utils/functions';
-import { FormProps, OnSubmit } from '../../models/types';
+import { validationSchema } from '../models/validationSchema';
+import { encode } from '../utils/functions';
+import { FormProps, OnSubmit } from '../models/types';
 import styled from 'styled-components';
-import UiContext from '../../store/ui-context';
-import Button from './Button';
-import Input from './Input';
+import UiContext from '../store/ui-context';
+import Button from './UI/Button';
+import Input from './UI/Input';
 import ReCAPTCHA from 'react-google-recaptcha';
-import Spinner from './Spinner';
+import Spinner from './UI/Spinner';
 
 const StyledForm = styled.form`
+  background-color: ${(props) => props.theme.formBackground};
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  padding: 1rem;
   width: 100%;
 `;
 
 const StyledDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 540px) {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+`;
+
+const RecaptchaWrapper = styled.div`
+  transform: scale(0.5);
+
+  @media (min-width: 225px) {
+    transform: scale(0.6);
+  }
+
+  @media (min-width: 255px) {
+    transform: scale(0.7);
+  }
+
+  @media (min-width: 275px) {
+    transform: scale(0.75);
+  }
+
+  @media (min-width: 285px) {
+    transform: scale(0.8);
+  }
+
+  @media (min-width: 300px) {
+    transform: scale(0.85);
+  }
+
+  @media (min-width: 315px) {
+    transform: scale(0.9);
+  }
+
+  @media (min-width: 375px) {
+    transform: scale(1);
+  }
 `;
 
 const HiddenLabel = styled.label`
@@ -44,6 +85,7 @@ const Form = ({ inputsArray }: FormProps) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const uiCtx = useContext(UiContext);
+  const { showAlert } = uiCtx;
 
   const recaptchaChangeHandler = () => {
     setButtonDisabled(false);
@@ -54,8 +96,6 @@ const Form = ({ inputsArray }: FormProps) => {
     const recaptchaValue = recaptchaRef.current?.getValue();
 
     if (recaptchaValue) {
-      console.log(data);
-
       try {
         const response = await fetch('/', {
           method: 'POST',
@@ -68,18 +108,14 @@ const Form = ({ inputsArray }: FormProps) => {
         });
 
         if (response.ok) {
-          // set succcess
-          //  alert success
-          alert('Contact Form Submitted Successfully!');
-          //  reset form
+          showAlert('success', 'Form submitted successfully!');
           reset();
         }
       } catch (error) {
-        //  alert error
-        alert(error);
+        showAlert('error', 'Form submission error!', error);
       }
     } else {
-      alert('Complete ReCaptcha');
+      showAlert('warning', 'Complete ReCaptcha!');
     }
     setIsSubmitting(false);
   };
@@ -114,15 +150,17 @@ const Form = ({ inputsArray }: FormProps) => {
         <input tabIndex={-1} {...register('got-ya')} />
       </HiddenLabel>
       <StyledDiv>
-        <ReCAPTCHA
-          id="recaptcha-google"
-          ref={recaptchaRef}
-          sitekey={process.env.GATSBY_GOOGLE_RECAPTCHA_SITE_KEY!}
-          theme={captchaTheme}
-          onChange={recaptchaChangeHandler}
-        />
+        <RecaptchaWrapper>
+          <ReCAPTCHA
+            id="recaptcha-google"
+            ref={recaptchaRef}
+            sitekey={process.env.GATSBY_GOOGLE_RECAPTCHA_SITE_KEY!}
+            theme={captchaTheme}
+            onChange={recaptchaChangeHandler}
+          />
+        </RecaptchaWrapper>
         {!isSubmitting ? (
-          <Button type="submit" disabled={buttonDisabled}>
+          <Button type="submit" disabled={buttonDisabled} isForm>
             Submit
           </Button>
         ) : (

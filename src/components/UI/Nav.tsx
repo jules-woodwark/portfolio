@@ -1,45 +1,30 @@
-import * as React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { NavItemObject } from '../../models/types';
+import React, { useContext } from 'react';
+import { NavProps } from '../../models/types';
 import styled from 'styled-components';
-import NavItem from './NavItem';
 
-const StyledList = styled.ul`
+import BurgerIcon from './BurgerIcon';
+import NavItems from './NavItems';
+import UiContext from '../../store/ui-context';
+
+const StyledNav = styled.nav`
+  align-items: center;
   display: flex;
-  list-style: none;
+  flex-direction: row;
+  height: 100%;
+  justify-content: flex-end;
+  overflow: hidden;
+  width: 100%;
 `;
 
-const Nav = () => {
-  const data = useStaticQuery(graphql`
-    {
-      prismicNavigation {
-        data {
-          nav_items {
-            nav_item_label
-            nav_item_id
-            nav_item_link {
-              url
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  const navItemsArray = data.prismicNavigation.data.nav_items;
-
-  const navItemMap = navItemsArray.map((navItem: NavItemObject) => (
-    <NavItem
-      key={navItem.nav_item_id}
-      url={navItem.nav_item_link.url}
-      text={navItem.nav_item_label}
-    />
-  ));
+const Nav = ({ isMobile }: NavProps) => {
+  const uiCtx = useContext(UiContext);
+  const { toggleSideDrawer } = uiCtx;
 
   return (
-    <nav>
-      <StyledList>{navItemMap}</StyledList>
-    </nav>
+    <StyledNav>
+      {isMobile && <BurgerIcon onClick={toggleSideDrawer} />}
+      {!isMobile && <NavItems contextType="nav" />}
+    </StyledNav>
   );
 };
 

@@ -7,9 +7,8 @@ const StyledCard = styled.article`
   border-radius: 0.3rem;
   border: 2px solid #666666;
   display: flex;
-  filter: grayscale(100%);
+  filter: grayscale(75%);
   flex-direction: column;
-  height: 40vw;
   margin: 2rem 0;
   overflow: hidden;
   padding: 1.16rem 1rem;

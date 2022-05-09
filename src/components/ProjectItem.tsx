@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { PrismicRichText } from '@prismicio/react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { ProjectItemProps } from '../../models/types';
+import { ProjectItemProps } from '../models/types';
 import styled from 'styled-components';
-import Card from './Card';
-import Heading from './Heading';
-import LinkButton from './LinkButton';
+import Card from './UI/Card';
+import Heading from './UI/Heading';
+import LinkButton from './UI/LinkButton';
 
 const StyledGatsbyImage = styled(GatsbyImage)`
   display: flex;
@@ -19,7 +19,7 @@ const StyledDiv = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 `;
 
 const ProjectItem = ({

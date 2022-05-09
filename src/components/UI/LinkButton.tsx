@@ -4,8 +4,16 @@ import { LinkButtonListItemProps } from '../../models/types';
 
 const StyledLinkButton = StyledButton.withComponent('a');
 
-const LinkButtonListItem = ({ href, children }: LinkButtonListItemProps) => {
-  return <StyledLinkButton href={href}>{children}</StyledLinkButton>;
+const LinkButtonListItem = ({
+  href,
+  children,
+  download,
+}: LinkButtonListItemProps) => {
+  return (
+    <StyledLinkButton href={href} download={download} isCard>
+      {children}
+    </StyledLinkButton>
+  );
 };
 
 export default LinkButtonListItem;

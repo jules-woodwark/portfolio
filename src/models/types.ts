@@ -1,7 +1,11 @@
-import * as React from 'react';
+import React, { ReactElement } from 'react';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { UseFormReturn } from 'react-hook-form';
 import * as prismicT from '@prismicio/types';
+
+//  SHARED TYPES
+export type ContextType = 'body' | 'nav' | 'sideDrawer';
+export type AlertType = 'error' | 'success' | 'warning';
 
 //  OBJECT TYPES
 export interface LooseObject {
@@ -42,43 +46,85 @@ export type OnSubmit = (token: { [x: string]: any }) => void;
 
 export type OnVerifyCaptcha = () => void;
 
-//  REACT CHILD WRAPPER TYPE
+export type ShowAlertFunction = (
+  type: AlertType,
+  message: string,
+  error?: unknown
+) => void;
+
+//  WRAPPER TYPES
 export interface HOCProps {
   children: React.ReactNode;
 }
 
+export interface ConditionalWrapperProps {
+  condition: boolean;
+  wrapper: (children: ReactElement) => ReactElement;
+  children: ReactElement;
+}
+
 //  PAGE TYPES
-export interface SliceQueryDataObject {
+export interface PrismicDocumentProps {
   data: LooseObject;
 }
 
 //  SLICE TYPES
 export interface SliceProps {
-  slice: LooseObject
+  slice: LooseObject;
 }
 
-//  UI COMPONENT TYPES
-export interface AlertProps {
+//  COMPONENT TYPES
+
+export interface AlertMessageProps {
   text: string;
+  alertType: AlertType;
+}
+
+export interface AlertIconProps {
+  alertType: 'error' | 'success' | 'warning';
 }
 
 export interface ModalProps extends HOCProps {
+  ariaLabel: string;
+  modalIsOpen: boolean;
   onClose: () => void;
+}
+
+export interface ModalOverlayProps extends HOCProps {
+  setRef: React.RefObject<HTMLElement>;
 }
 
 export interface BackdropProps {
-  onClose: () => void;
+  children?: React.ReactNode;
+  onClick: () => void;
+  role?: string;
+  model?: any;
+  ariaLabel?: string;
+}
+
+export interface BurgerIconProps {
+  onClick: () => void;
 }
 
 export interface ButtonProps {
-  children: string;
+  children: JSX.Element | string;
+  disabled?: boolean;
+  isCard?: boolean;
+  isForm?: boolean;
+  isNav?: boolean;
+  isSideDrawer?: boolean;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset' | undefined;
-  disabled?: boolean;
+}
+
+export interface CloseButtonProps {
+  onClick: () => void;
+  closeType?: 'modal' | 'sideDrawer' | 'error' | 'success' | 'warning';
 }
 
 export interface HeaderProps {
-  showHeader: boolean;
+  showToolbar: boolean;
+  isMobile: boolean;
 }
 
 export interface HeadingProps {
@@ -87,7 +133,18 @@ export interface HeadingProps {
 }
 
 export interface SectionProps extends HOCProps {
+  id?: string;
   isHero?: boolean;
+  isResume?: boolean;
+  isFooter?: boolean;
+}
+
+export interface LogoProps {
+  isSideDrawer?: boolean;
+}
+
+export interface NavProps {
+  isMobile: boolean;
 }
 
 export interface NavItemObject {
@@ -98,13 +155,18 @@ export interface NavItemObject {
   nav_item_label: string;
 }
 
-export interface NavItemProps {
+export interface NavItemsProps {
+  contextType: ContextType;
+}
+
+export interface NavAnchorProps {
   url: string;
   text: string;
 }
 
 export interface LinkButtonListProps {
-  array: [
+  contextType: ContextType;
+  linksArray: [
     {
       button_link: {
         url: string;
@@ -114,8 +176,10 @@ export interface LinkButtonListProps {
   ];
 }
 
-export interface LinkButtonListItemProps extends HOCProps {
+export interface LinkButtonListItemProps {
+  children: string;
   href: string;
+  download?: boolean;
 }
 
 export interface ProfilePhotoProps {
@@ -123,6 +187,7 @@ export interface ProfilePhotoProps {
 }
 
 export interface SocialListProps {
+  contextType: ContextType;
   email: string;
   gitHub: string;
   isWhite: boolean;
@@ -173,7 +238,33 @@ export interface InputProps {
   };
 }
 
+export interface ResumeButtonProps {
+  contextType?: ContextType;
+}
+
+export interface SEOProps {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+}
+
+export interface ToggleThemeProps {
+  contextType: ContextType;
+}
+
 //  STYLED COMPONENTS
 export interface StyledIconProps {
   $isWhite: boolean; // Transient prop
+}
+
+//  CONTEXT TYPES
+export interface AlertStateObject {
+  message: string;
+  type: AlertType;
+}
+
+export interface Size {
+  width: number | string;
+  height: number | string;
 }

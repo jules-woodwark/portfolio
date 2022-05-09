@@ -1,24 +1,26 @@
-import type { GatsbyConfig } from 'gatsby';
-
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const config: GatsbyConfig = {
+module.exports = {
   siteMetadata: {
-    title: `portfolio`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Portfolio`,
+    description: "Jules Woodwark's portfolio website",
+    titleTemplate: '%s - Jules Woodwark',
+    url: `https://www.juleswoodwark.dev`,
+    image: './public/static/favicon.png',
   },
   plugins: [
-    'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`roboto\:300,400,600,900`],
+        fonts: [`roboto\:300, 600`],
         display: 'swap',
       },
     },
@@ -32,8 +34,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `./src/images/`,
+        name: `media`,
+        path: `./src/media/`,
       },
     },
     {
@@ -52,5 +54,3 @@ const config: GatsbyConfig = {
     },
   ],
 };
-
-export default config;

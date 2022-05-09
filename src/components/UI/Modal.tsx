@@ -1,64 +1,63 @@
-import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import React, { createRef } from 'react';
+import { createPortal } from 'react-dom';
 import styled, { keyframes } from 'styled-components';
-import { BackdropProps, ModalProps, HOCProps } from '../../models/types';
+import { ModalProps, ModalOverlayProps } from '../../models/types';
+import useKeyListeners from '../../hooks/useKeyListeners';
+import Backdrop from './Backdrop';
 
 const SlideDownAnimation = keyframes`
   from {
     opacity: 0;
-    transform: translateY(-3rem);
+    transform: translate(-50%, -100%);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, -50%);
   }
-`;
-
-const StyledBackdrop = styled.div`
-  background-color: rgba(0, 0, 0, 0.75);
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 20;
 `;
 
 const StyledModal = styled.aside`
   animation: ${SlideDownAnimation} 300ms ease-out forwards;
-  background-color: white;
+  background-color: ${(props) => props.theme.modalBackgroundColor};
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  left: 5%;
-  padding: 1rem;
+  box-sizing: border-box;
+  left: 50%;
+  padding: 2rem;
   position: fixed;
-  top: 20vh;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 90%;
   z-index: 30;
 `;
 
-const Backdrop = ({ onClose }: BackdropProps) => {
-  return <StyledBackdrop onClick={onClose}></StyledBackdrop>;
+const ModalOverlay = ({ children, setRef }: ModalOverlayProps) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+  };
+
+  return (
+    <StyledModal ref={setRef} onClick={handleClick}>
+      {children}
+    </StyledModal>
+  );
 };
 
-const ModalOverlay = ({ children }: HOCProps) => {
-  return <StyledModal>{children}</StyledModal>;
-};
+const portalElement =
+  typeof document !== 'undefined' ? document.getElementById('modal') : null;
 
-const portalElement = document.getElementById('modal');
+const Modal = ({ onClose, children, ariaLabel }: ModalProps) => {
+  const modalRef = createRef<HTMLDivElement>();
+  useKeyListeners(modalRef, onClose);
 
-const Modal = ({ onClose, children }: ModalProps) => {
   let modal = null;
 
   if (portalElement) {
-    modal = (
-      <Fragment>
-        {ReactDOM.createPortal(<Backdrop onClose={onClose} />, portalElement)}
-        {ReactDOM.createPortal(
-          <ModalOverlay>{children}</ModalOverlay>,
-          portalElement
-        )}
-      </Fragment>
+    modal = createPortal(
+      <Backdrop onClick={onClose} ariaLabel={ariaLabel}>
+        <ModalOverlay setRef={modalRef}>{children}</ModalOverlay>
+      </Backdrop>,
+      portalElement
     );
   }
 

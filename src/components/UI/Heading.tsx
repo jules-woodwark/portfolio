@@ -2,24 +2,33 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { PrismicRichText } from '@prismicio/react';
 import { HeadingProps } from '../../models/types';
+import { device } from '../../theme/theme';
 
 const StyledHeroTitle = styled.h1`
   color: ${(props) => props.theme.text};
-  letter-spacing: 0.1rem;
   font-size: 2.5em;
-  margin-top: 1rem;
   margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
+
+  @media ${device.mobileXS} {
+    letter-spacing: 0.1rem;
+  }
 `;
 
 const StyledHeroSubTitle = styled.h2`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: ${(props) => props.theme.heroSubTitleBackground};
-  letter-spacing: 0.1rem;
-  font-size: 2em;
   color: #fff8ee;
-  margin-top: 0.5rem;
+  font-size: 2em;
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
+
+  @media ${device.mobileXS} {
+    letter-spacing: 0.1rem;
+  }
 `;
 
 export const StyledSectionTitle = styled.h2`
@@ -27,9 +36,12 @@ export const StyledSectionTitle = styled.h2`
   color: ${(props) => props.theme.text};
   font-size: 3em;
   justify-content: center;
-  letter-spacing: 0.1rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
+
+  @media ${device.mobileXS} {
+    letter-spacing: 0.1rem;
+  }
 `;
 
 const StyledProjectTitle = styled.h3`
@@ -39,6 +51,10 @@ const StyledProjectTitle = styled.h3`
   margin-right: auto;
   font-size: 1.7em;
   line-height: 1.7em;
+`;
+
+const StyledModalTitle = styled(StyledSectionTitle)`
+  color: ${(props) => props.theme.modalTitleColor};
 `;
 
 const Heading = ({ type, field }: HeadingProps) => {
@@ -85,6 +101,17 @@ const Heading = ({ type, field }: HeadingProps) => {
           components={{
             heading3: ({ children }) => (
               <StyledProjectTitle>{children}</StyledProjectTitle>
+            ),
+          }}
+        />
+      ));
+    case 'modalTitle':
+      return (component = (
+        <PrismicRichText
+          field={field}
+          components={{
+            heading1: ({ children }) => (
+              <StyledModalTitle>{children}</StyledModalTitle>
             ),
           }}
         />

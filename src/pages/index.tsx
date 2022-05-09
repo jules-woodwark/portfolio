@@ -2,8 +2,21 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 import { SliceZone } from '@prismicio/react';
 import { components } from '../slices';
-import { SliceQueryDataObject } from '../models/types';
+import { PrismicDocumentProps } from '../models/types';
 import Layout from '../components/UI/Layout';
+
+const IndexPage = ({ data }: PrismicDocumentProps) => {
+  return (
+    <Layout>
+      <SliceZone
+        slices={data.prismicHomepag.data.body}
+        components={components}
+      />
+    </Layout>
+  );
+};
+
+export default IndexPage;
 
 export const query = graphql`
   {
@@ -21,7 +34,7 @@ export const query = graphql`
             }
             primary {
               description {
-                richText
+                text
               }
               email_address
               github_link {
@@ -99,16 +112,3 @@ export const query = graphql`
     }
   }
 `;
-
-const IndexPage = ({ data }: SliceQueryDataObject) => {
-  return (
-    <Layout>
-      <SliceZone
-        slices={data.prismicHomepag.data.body}
-        components={components}
-      />
-    </Layout>
-  );
-};
-
-export default IndexPage;
