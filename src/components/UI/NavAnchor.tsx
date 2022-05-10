@@ -1,7 +1,8 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { NavAnchorProps } from '../../models/types';
 import { device } from '../../theme/theme';
 import styled from 'styled-components';
+import UiContext from '../../store/ui-context';
 
 const StyledAnchor = styled.a`
   color: ${(props) => props.theme.text};
@@ -22,7 +23,20 @@ const StyledAnchor = styled.a`
 `;
 
 const NavAnchor = ({ url, text }: NavAnchorProps) => {
-  return <StyledAnchor href={url}>{text}</StyledAnchor>;
+  const uiCtx = useContext(UiContext);
+
+  const { sideDrawerIsShown, toggleSideDrawer } = uiCtx;
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    sideDrawerIsShown && toggleSideDrawer();
+  };
+
+  return (
+    <StyledAnchor onClick={handleClick} href={url}>
+      {text}
+    </StyledAnchor>
+  );
 };
 
 export default NavAnchor;
