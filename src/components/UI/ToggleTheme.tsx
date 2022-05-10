@@ -21,8 +21,12 @@ const StyledDiv = styled.div<ToggleThemeProps>`
     props.contextType === 'body' &&
     `
     font-size: 1.5em;
-    margin-top: 1rem;
     margin-bottom: 1rem;
+    margin-top: 3rem;
+
+    @media ${device.mobileS} {
+      margin-top: 1rem;
+    }
 
     @media ${device.mobileXL} {
       margin-top: 0;

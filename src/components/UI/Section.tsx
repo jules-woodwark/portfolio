@@ -15,10 +15,7 @@ const StyledSection = styled.section<SectionProps>`
     props.isHero &&
     `
     height: 100vh;
-
-    @media ${device.mobileXS} {
-      margin-top: 13rem;
-    }
+    margin: 0;
   `}
 
   ${(props) =>
