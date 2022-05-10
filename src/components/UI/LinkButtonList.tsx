@@ -10,7 +10,7 @@ const StyledList = styled.ul`
   list-style-type: none;
   margin-top: 1rem;
 
-  @media (min-width: 400px) {
+  @media (min-width: 500px) {
     display: flex;
     flex-direction: row;
   }
