@@ -52,6 +52,11 @@ export type ShowAlertFunction = (
   error?: unknown
 ) => void;
 
+export type useKeyListenersFunction = (
+  ref: React.RefObject<HTMLElement>,
+  onClose: () => void
+) => void;
+
 //  WRAPPER TYPES
 export interface HOCProps {
   children: React.ReactNode;
@@ -123,7 +128,7 @@ export interface CloseButtonProps {
 }
 
 export interface HeaderProps {
-  showToolbar: boolean;
+  isSolid: boolean;
   isMobile: boolean;
 }
 

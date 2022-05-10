@@ -55,6 +55,11 @@ const StyledProjectTitle = styled.h3`
 
 const StyledModalTitle = styled(StyledSectionTitle)`
   color: ${(props) => props.theme.modalTitleColor};
+
+  @media (max-height: 830px) {
+    margin: 0.25rem 0;
+    font-size: 2.5em;
+  }
 `;
 
 const Heading = ({ type, field }: HeadingProps) => {

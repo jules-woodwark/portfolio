@@ -1,11 +1,7 @@
 import { useEffect } from 'react';
+import { useKeyListenersFunction } from '../models/types';
 
-export type useKeyListeners = (
-  ref: React.RefObject<HTMLElement>,
-  onClose: () => void
-) => void;
-
-const useKeyListeners: useKeyListeners = (ref, onClose) => {
+const useKeyListeners: useKeyListenersFunction = (ref, onClose) => {
   useEffect(() => {
     const keyListener = (event: KeyboardEvent) => {
       const listener = keyListenersMap.get(event.keyCode);

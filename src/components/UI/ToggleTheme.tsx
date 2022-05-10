@@ -18,12 +18,30 @@ const StyledDiv = styled.div<ToggleThemeProps>`
   }
 
   ${(props) =>
+    props.contextType === 'body' &&
+    `
+    font-size: 1.5em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    @media ${device.mobileXL} {
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-right: 1rem;
+    }
+  `}
+
+  ${(props) =>
     props.contextType === 'nav' &&
     `
       font-size: 1em;
       margin-right: 0.5em;
       border: 2px #FFF solid;
       border-radius: 50%;
+
+      @media ${device.laptopL} {
+        font-size: 0.8em;
+      }
     `};
 
   ${(props) =>
@@ -33,7 +51,7 @@ const StyledDiv = styled.div<ToggleThemeProps>`
       margin-right: 0;
     `}
 
-  & :hover {
+  &:hover {
     cursor: pointer;
     opacity: 0.8;
     transform: translateY(-1px);

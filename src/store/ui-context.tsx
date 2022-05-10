@@ -6,8 +6,8 @@ const UiContext = createContext<{
   resumeIsShown: boolean;
   sideDrawerIsShown: boolean;
   theme: string;
-  showAlert: ShowAlertFunction;
   setAlert: React.Dispatch<React.SetStateAction<AlertStateObject | null>>;
+  showAlert: ShowAlertFunction;
   toggleResume: () => void;
   toggleSideDrawer: () => void;
   toggleTheme: () => void;
@@ -16,14 +16,14 @@ const UiContext = createContext<{
   resumeIsShown: false,
   sideDrawerIsShown: false,
   theme: 'light',
-  showAlert: () => {},
   setAlert: () => {},
+  showAlert: () => {},
   toggleResume: () => {},
   toggleSideDrawer: () => {},
   toggleTheme: () => {},
 });
 
-const isBrowser = typeof window !== "undefined";
+const isBrowser = typeof window !== 'undefined';
 
 export const UiContextProvider = ({ children }: HOCProps) => {
   const [alert, setAlert] = useState<AlertStateObject | null>(null);
@@ -78,8 +78,8 @@ export const UiContextProvider = ({ children }: HOCProps) => {
     resumeIsShown,
     sideDrawerIsShown,
     theme,
-    showAlert,
     setAlert,
+    showAlert,
     toggleResume,
     toggleSideDrawer,
     toggleTheme,

@@ -24,7 +24,7 @@ const StyledCloseButton = styled.button<CloseButtonProps>`
     background-color: ${props.theme.buttonBackground};
     border: none;
     color: white;
-    font-size: 0.9em;
+    font-size: 0.7em;
 
     &:hover,
     &:focus {

@@ -29,7 +29,7 @@ const StyledMain = styled.main`
   }
 
   @media ${device.mobileXL} {
-    padding: 0 2.5rem;
+    padding: 0 1.5rem;
   }
 
   @media ${device.tablet} {
@@ -37,27 +37,28 @@ const StyledMain = styled.main`
   }
 
   @media ${device.laptop} {
-    padding: 0 10rem;
     max-width: 70vw;
   }
 
   @media ${device.laptopL} {
-    max-width: 60vw;
+    max-width: 50vw;
   }
 `;
 
 const Layout = ({ children }: HOCProps) => {
   const uiCtx = useContext(UiContext);
-  const [showToolbar, setShowToolbar] = useState(false);
+  const [toolbarIsSolid, setToolbarIsSolid] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
   const scroll = useScrollListener();
   const windowSize = useWindowSize();
 
+  const { theme, resumeIsShown, alert } = uiCtx;
+
   useEffect(() => {
     if (scroll.y > 850) {
-      setShowToolbar(true);
+      setToolbarIsSolid(true);
     } else {
-      setShowToolbar(false);
+      setToolbarIsSolid(false);
     }
   }, [scroll.y, scroll.lastY]);
 
@@ -69,7 +70,6 @@ const Layout = ({ children }: HOCProps) => {
     }
   }, [windowSize.width]);
 
-  const { theme, resumeIsShown, alert } = uiCtx;
   const showParallex = theme === 'light' ? true : false;
 
   return (
@@ -82,7 +82,7 @@ const Layout = ({ children }: HOCProps) => {
         wrapper={(children) => <StyledBackground>{children}</StyledBackground>}
       >
         <Fragment>
-          <Header showToolbar={showToolbar} isMobile={isMobile} />
+          <Header isSolid={toolbarIsSolid} isMobile={isMobile} />
           {isMobile && <SideDrawer />}
           <Parallax speed={-30}>
             <StyledMain>

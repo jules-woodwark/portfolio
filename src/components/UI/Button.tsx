@@ -63,8 +63,10 @@ export const StyledButton = styled.button<ButtonProps>`
   ${(props) =>
     props.isCard &&
     `
+    text-align: center;
+    
     @media ${device.tablet} {
-      max-width: 30vw;
+      max-width: 25vw;
     }
     
   `}

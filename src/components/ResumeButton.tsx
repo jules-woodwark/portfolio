@@ -14,7 +14,8 @@ const defaultUiStyles = css`
   text-transform: uppercase;
   transition: all 125ms ease-in-out;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     transform: none;
     box-shadow: none;
     opacity: 0.9;
@@ -27,6 +28,7 @@ const StyledResumeButton = styled(StyledButton)<ResumeButtonProps>`
     props.contextType === 'nav' &&
     `
     ${defaultUiStyles};
+
     background-color: ${props.theme.uiBackground};
 
     &:hover {
@@ -51,14 +53,18 @@ const StyledResumeButton = styled(StyledButton)<ResumeButtonProps>`
 
 const ResumeButton = ({ contextType }: ResumeButtonProps) => {
   const uiCtx = useContext(UiContext);
-  const { toggleResume } = uiCtx;
+  const { toggleResume, navIsSolid } = uiCtx;
 
   const handleClick = () => {
     toggleResume();
   };
 
   return (
-    <StyledResumeButton onClick={handleClick} contextType={contextType}>
+    <StyledResumeButton
+      navIsSolid
+      onClick={handleClick}
+      contextType={contextType}
+    >
       CV
     </StyledResumeButton>
   );

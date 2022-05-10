@@ -8,17 +8,16 @@ const StyledSection = styled.section<SectionProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 4rem 0;
+  margin: 8rem 0;
   font-weight: ${(props) => props.theme.fontWeight};
 
   ${(props) =>
     props.isHero &&
     `
     height: 100vh;
-    margin: 0;
 
-    @media ${device.mobileXL} {
-      margin-top: -3rem;
+    @media ${device.mobileXS} {
+      margin-top: 13rem;
     }
   `}
 

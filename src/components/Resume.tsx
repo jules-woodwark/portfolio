@@ -12,6 +12,11 @@ const StyledIframe = styled.iframe`
   border-radius: 10px;
   margin: 2rem 0;
   min-height: 50vh;
+
+  @media (max-height: 830px) {
+    margin: 0.5rem 0;
+    font-size: 2.5em;
+  }
 `;
 
 const Resume = () => {

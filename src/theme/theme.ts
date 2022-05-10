@@ -20,7 +20,7 @@ export const lightTheme = {
   iconColor: '#FEFCD7',
   linkBackgroundHover: '#FE9292',
   mainMarginBottom: '300px',
-  mainMarginTop: '173.095px',
+  mainMarginTop: '185.552px',
   modalBackgroundColor: '#FFF',
   modalTitleColor: '#2F4858',
   projectBackground: '#FFF',
@@ -48,7 +48,7 @@ export const darkTheme = {
   iconColor: '#FDB768',
   linkBackgroundHover: '#292929',
   mainMarginBottom: '300px',
-  mainMarginTop: '171.381px',
+  mainMarginTop: '185.552px',
   modalBackgroundColor: '#666666',
   modalTitleColor: '#FFF',
   projectBackground: '#666666',
@@ -83,5 +83,4 @@ export const device = {
   laptop: `(min-width: ${size.laptop})`,
   laptopL: `(min-width: ${size.laptopL})`,
   desktop: `(min-width: ${size.desktop})`,
-  desktopL: `(min-width: ${size.desktop})`,
 };

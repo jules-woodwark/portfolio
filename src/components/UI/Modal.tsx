@@ -2,6 +2,7 @@ import React, { createRef } from 'react';
 import { createPortal } from 'react-dom';
 import styled, { keyframes } from 'styled-components';
 import { ModalProps, ModalOverlayProps } from '../../models/types';
+import { device } from '../../theme/theme';
 import useKeyListeners from '../../hooks/useKeyListeners';
 import Backdrop from './Backdrop';
 
@@ -29,6 +30,14 @@ const StyledModal = styled.aside`
   transform: translate(-50%, -50%);
   width: 90%;
   z-index: 30;
+
+  @media ${device.laptop} {
+    max-width: 70vw;
+  }
+
+  @media ${device.laptopL} {
+    max-width: 50vw;
+  }
 `;
 
 const ModalOverlay = ({ children, setRef }: ModalOverlayProps) => {
