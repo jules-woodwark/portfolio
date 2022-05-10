@@ -17,12 +17,25 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Jules Woodwark's Portfolio",
+        short_name: 'Jules Woodwark',
+        start_url: '/',
+        background_color: '#FFF',
+        theme_color: '#FFF',
+        display: 'standalone',
+        icon: 'src/media/images/icon.svg',
+        crossOrigin: `use-credentials`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          quality: 100
-        }
-      }
+          quality: 100,
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-google-fonts`,
