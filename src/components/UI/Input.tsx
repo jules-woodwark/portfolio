@@ -39,7 +39,7 @@ const StyledInput = styled.input`
 
 const StyledTextArea = StyledInput.withComponent('textarea');
 
-const StyledErrorText = styled.p`
+const StyledErrorText = styled.span`
   color: ${(props) => props.theme.uiBackground};
 `;
 
@@ -60,7 +60,7 @@ const Input = ({ errors, name, placeholder, register, type }: InputProps) => {
       inputElement = (
         <StyledInput
           aria-invalid={errors.name ? 'true' : 'false'}
-          {...register(name!)}
+          {...register(name!, { required: true })}
           placeholder={placeholder}
           type={type}
         />
@@ -70,7 +70,7 @@ const Input = ({ errors, name, placeholder, register, type }: InputProps) => {
       inputElement = (
         <StyledTextArea
           aria-invalid={errors.name ? 'true' : 'false'}
-          {...register(name!)}
+          {...register(name!, { required: true })}
           placeholder={placeholder}
           rows={4}
         />

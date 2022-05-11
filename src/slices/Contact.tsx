@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SliceProps } from '../models/types';
 import Section from '../components/UI/Section';
 import Heading from '../components/UI/Heading';
-import Form from '../components/Form';
+import ContactForm from '../components/ContactForm';
 
 const Contact = ({ slice }: SliceProps) => {
   const { contact_title, form_endpoint } = slice.primary;
@@ -10,7 +10,7 @@ const Contact = ({ slice }: SliceProps) => {
   return (
     <Section id="contact">
       <Heading type="articleTitle" field={contact_title.richText} />
-      <Form inputsArray={slice.items} />
+      <ContactForm inputsArray={slice.items} />
     </Section>
   );
 };

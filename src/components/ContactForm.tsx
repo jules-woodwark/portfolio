@@ -74,7 +74,7 @@ const HiddenLabel = styled.label`
   width: 1px;
 `;
 
-const Form = ({ inputsArray }: FormProps) => {
+const ContactForm = ({ inputsArray }: FormProps) => {
   const {
     handleSubmit,
     register,
@@ -85,7 +85,21 @@ const Form = ({ inputsArray }: FormProps) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const uiCtx = useContext(UiContext);
+
   const { showAlert } = uiCtx;
+  const { theme } = uiCtx;
+  const captchaTheme = theme === 'light' ? 'light' : 'dark';
+
+  const formFieldsMap = inputsArray.map((input) => (
+    <Input
+      key={input.input_name}
+      type={input.input_type}
+      name={input.input_name}
+      placeholder={input.input_placeholder}
+      register={register}
+      errors={errors}
+    />
+  ));
 
   const recaptchaChangeHandler = () => {
     setButtonDisabled(false);
@@ -109,6 +123,8 @@ const Form = ({ inputsArray }: FormProps) => {
 
         if (response.ok) {
           showAlert('success', 'Form submitted successfully!');
+          recaptchaRef.current?.reset();
+          setButtonDisabled(true);
           reset();
         }
       } catch (error) {
@@ -119,20 +135,6 @@ const Form = ({ inputsArray }: FormProps) => {
     }
     setIsSubmitting(false);
   };
-
-  const { theme } = uiCtx;
-  const captchaTheme = theme === 'light' ? 'light' : 'dark';
-
-  const formFieldsMap = inputsArray.map((input) => (
-    <Input
-      key={input.input_name}
-      type={input.input_type}
-      name={input.input_name}
-      placeholder={input.input_placeholder}
-      register={register}
-      errors={errors}
-    />
-  ));
 
   return (
     <StyledForm
@@ -171,4 +173,4 @@ const Form = ({ inputsArray }: FormProps) => {
   );
 };
 
-export default Form;
+export default ContactForm;
