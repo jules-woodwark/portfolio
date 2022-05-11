@@ -106,7 +106,7 @@ const ContactForm = ({ inputsArray }: FormProps) => {
   };
 
   const onSubmit: OnSubmit = async (data, event) => {
-    event?.preventDefault();
+    event && event.preventDefault();
     setIsSubmitting(true);
 
     const recaptchaValue = recaptchaRef.current?.getValue();
@@ -119,6 +119,7 @@ const ContactForm = ({ inputsArray }: FormProps) => {
           body: encode({
             'form-name': 'contact-form',
             'g-recaptcha-response': recaptchaValue,
+            'got-ya': data.gotYa,
             ...data,
           }),
         });
