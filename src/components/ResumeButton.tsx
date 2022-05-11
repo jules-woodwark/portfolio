@@ -41,7 +41,7 @@ const StyledResumeButton = styled(StyledButton)<ResumeButtonProps>`
     props.contextType === 'sideDrawer' &&
     `
     ${defaultUiStyles};
-    background-color: ${props.theme.modalBackgroundColor};
+    background-color: inherit;
     color: ${props.theme.text};
 
     &:hover {
