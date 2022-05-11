@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HeaderProps } from '../../models/types';
 import styled from 'styled-components';
 import Logo from './Logo';
 import Nav from './Nav';
+import ReactTooltip from 'react-tooltip';
 
 const StyledHeader = styled.header<HeaderProps>`
   align-items: center;
@@ -27,6 +28,10 @@ const StyledHeader = styled.header<HeaderProps>`
 `;
 
 const Header = ({ isSolid, isMobile }: HeaderProps) => {
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  }, []);
+
   return (
     <StyledHeader isSolid={isSolid} isMobile={isMobile}>
       <Logo />

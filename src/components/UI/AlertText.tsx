@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { AlertMessageProps } from '../../models/types';
+import styled from 'styled-components';
 
 const StyledAlertMessage = styled.p<{
   alertType: 'error' | 'success' | 'warning';

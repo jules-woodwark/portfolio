@@ -1,6 +1,6 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { LogoProps } from '../../models/types';
+import styled from 'styled-components';
 
 const StyledLogoText = styled.h1<LogoProps>`
   color: inherit;

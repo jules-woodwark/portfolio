@@ -11,8 +11,8 @@ const StyledGatsbyImage = styled(GatsbyImage)`
   display: flex;
   justify-content: flex-end;
   max-width: 30vw;
-  transform: rotateX(31deg) rotateZ(15deg) scale(1.3);
   transform-style: preserve-3d;
+  transform: rotateX(31deg) rotateZ(15deg) scale(1.3);
 `;
 
 const StyledDiv = styled.div`

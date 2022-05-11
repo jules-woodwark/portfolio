@@ -1,9 +1,9 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { validationSchema } from '../models/validationSchema';
+import React, { useState, useContext, useRef } from 'react';
 import { encode } from '../utils/functions';
 import { FormProps, OnSubmit } from '../models/types';
+import { useForm } from 'react-hook-form';
+import { validationSchema } from '../models/validationSchema';
+import { yupResolver } from '@hookform/resolvers/yup';
 import styled from 'styled-components';
 import UiContext from '../store/ui-context';
 import Button from './UI/Button';
@@ -64,14 +64,14 @@ const RecaptchaWrapper = styled.div`
 `;
 
 const HiddenLabel = styled.label`
-  position: absolute;
-  overflow: hidden;
+  border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
-  width: 1px;
   margin: -1px;
+  overflow: hidden;
   padding: 0;
-  border: 0;
+  position: absolute;
+  width: 1px;
 `;
 
 const Form = ({ inputsArray }: FormProps) => {

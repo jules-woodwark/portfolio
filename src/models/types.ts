@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { Effect, Place } from 'react-tooltip';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { UseFormReturn } from 'react-hook-form';
 import * as prismicT from '@prismicio/types';

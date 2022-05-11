@@ -26,6 +26,8 @@ export const lightTheme = {
   projectBackground: '#FFF',
   sideDrawerBackground: '#FFF',
   text: '#2F4858',
+  tooltipBackground: '#2F4858',
+  tooltipText: 'FFF',
   uiBackground: '#2F4858',
 };
 
@@ -54,6 +56,8 @@ export const darkTheme = {
   projectBackground: '#666666',
   sideDrawerBackground: '#666666',
   text: '#FFF',
+  tooltipBackground: '#9660f9',
+  tooltipText: 'FFF',
   uiBackground: '#9660f9',
 };
 

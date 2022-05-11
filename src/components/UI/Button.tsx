@@ -1,7 +1,7 @@
 import * as React from 'react';
+import styled, { css } from 'styled-components';
 import { ButtonProps } from '../../models/types';
 import { device } from '../../theme/theme';
-import styled, { css } from 'styled-components';
 
 export const buttonBaseStyles = css`
   box-sizing: border-box;

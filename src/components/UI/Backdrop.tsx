@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { BackdropProps } from '../../models/types';
+import styled from 'styled-components';
 
 const StyledBackdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.75);

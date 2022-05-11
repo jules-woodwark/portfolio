@@ -1,13 +1,15 @@
 import React, { Fragment, useEffect, useState, useContext } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import { device } from '../../theme/theme';
 import { GlobalStyle } from './GlobalStyle';
 import { HOCProps } from '../../models/types';
 import { lightTheme, darkTheme } from '../../theme/theme';
 import { Normalize } from 'styled-normalize';
+import { Parallax } from 'react-scroll-parallax';
 import { useScrollListener } from '../../hooks/useScrollListener';
-import { device } from '../../theme/theme';
-import useWindowSize from '../../hooks/useWindowSize';
 import UiContext from '../../store/ui-context';
+import useWindowSize from '../../hooks/useWindowSize';
+
 import Alert from './Alert';
 import ConditionalWrapper from '../ConditionalWrapper';
 import Footer from './Footer';
@@ -16,7 +18,6 @@ import Resume from '../Resume';
 import SEO from '../SEO';
 import SideDrawer from './SideDrawer';
 import StyledBackground from './Background';
-import { Parallax } from 'react-scroll-parallax';
 
 const StyledMain = styled.main`
   margin: auto;

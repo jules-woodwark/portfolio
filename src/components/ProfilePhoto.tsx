@@ -5,8 +5,8 @@ import { ProfilePhotoProps } from '../models/types';
 
 const StyledGatsbyImage = styled(GatsbyImage)`
   border-radius: 0.5rem;
-  max-width: 300px;
   max-height: 300px;
+  max-width: 300px;
 `;
 
 const ProfilePhoto = ({ image }: ProfilePhotoProps) => {

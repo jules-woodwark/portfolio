@@ -2,8 +2,6 @@ import * as React from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import styled, { keyframes } from 'styled-components';
 
-// import { breakpoints } from '../../theme/breakpoints';
-
 const spin = keyframes`
   from {
     transform: rotate(0deg);
@@ -14,10 +12,11 @@ const spin = keyframes`
 `;
 
 const StyledSpinner = styled(FaSpinner)`
-  font-size: 2.5rem;
-  display: block;
-  margin: 1rem 0;
   animation: ${spin} infinite 4s linear;
+  color: ${(props) => props.theme.text};
+  display: block;
+  font-size: 2.5rem;
+  margin: 1rem 0;
 `;
 
 const Spinner = () => {
@@ -25,15 +24,3 @@ const Spinner = () => {
 };
 
 export default Spinner;
-
-/*
-
-  // @media ${breakpoints.tablet} {
-  //   font-size: 3.5rem;
-  // }
-
-  // @media ${breakpoints.laptop} {
-  //   font-size: 4.5rem;
-  // }
-
-*/

@@ -16,10 +16,10 @@ const defaultUiStyles = css`
 
   &:hover,
   &:focus {
-    transform: none;
     box-shadow: none;
     opacity: 0.9;
     text-decoration: underline;
+    transform: none;
   }
 `;
 

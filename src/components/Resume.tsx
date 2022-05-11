@@ -14,8 +14,8 @@ const StyledIframe = styled.iframe`
   min-height: 50vh;
 
   @media (max-height: 830px) {
-    margin: 0.5rem 0;
     font-size: 2.5em;
+    margin: 0.5rem 0;
   }
 `;
 

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { FaMoon, FaSun } from 'react-icons/fa';
-import { ToggleThemeProps } from '../../models/types';
+import ReactTooltip, { Place } from 'react-tooltip';
 import { device } from '../../theme/theme';
+import { ToggleThemeProps } from '../../models/types';
 import UiContext from '../../store/ui-context';
-import ReactTooltip from 'react-tooltip';
 
 const StyledDiv = styled.div<ToggleThemeProps>`
   align-items: center;
@@ -81,10 +81,24 @@ const StyledSunIcon = styled(FaSun)`
 const ToggleTheme = ({ contextType }: ToggleThemeProps) => {
   const uiCtx = useContext(UiContext);
   const { theme, toggleTheme } = uiCtx;
-  const icon = theme === 'light' ? <StyledMoonIcon /> : <StyledSunIcon />;
 
+  const icon = theme === 'light' ? <StyledMoonIcon /> : <StyledSunIcon />;
+  const tooltipType = theme === 'light' ? 'dark' : 'light';
   const tooltipText =
     theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+  let place;
+
+  switch (contextType) {
+    case 'nav':
+      place = 'left' as Place;
+      break;
+    case 'body':
+      place = 'top' as Place;
+      break;
+    case 'sideDrawer':
+      place = 'bottom' as Place;
+      break;
+  }
 
   const handleClick = () => {
     toggleTheme();
@@ -99,8 +113,9 @@ const ToggleTheme = ({ contextType }: ToggleThemeProps) => {
     >
       {icon}
       <ReactTooltip
+        type={tooltipType}
         id={`themeTip-${contextType}`}
-        place="bottom"
+        place={place}
         effect="solid"
       >
         {tooltipText}

@@ -73,7 +73,9 @@ const SocialList = ({
   contextType,
 }: SocialListProps) => {
   const uiCtx = useContext(UiContext);
-  const { showAlert } = uiCtx;
+  const { showAlert, theme } = uiCtx;
+
+  const tooltipType = theme === 'light' ? 'dark' : 'light';
 
   const copyEmailToClipboardHandler = () => {
     showAlert('success', 'Email copied to clipboard!');
@@ -92,6 +94,7 @@ const SocialList = ({
       </ListItem>
       <ReactTooltip
         id={`emailTip-${contextType}`}
+        type={tooltipType}
         place="bottom"
         effect="solid"
       >
@@ -104,6 +107,7 @@ const SocialList = ({
       </ListItem>
       <ReactTooltip
         id={`gitHubTip-${contextType}`}
+        type={tooltipType}
         place="bottom"
         effect="solid"
       >
@@ -116,6 +120,7 @@ const SocialList = ({
       </ListItem>
       <ReactTooltip
         id={`linkedInTip-${contextType}`}
+        type={tooltipType}
         place="bottom"
         effect="solid"
       >

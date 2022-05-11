@@ -1,8 +1,8 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { PrismicRichText } from '@prismicio/react';
 import { HeadingProps } from '../../models/types';
 import { device } from '../../theme/theme';
+import styled from 'styled-components';
 
 const StyledHeroTitle = styled.h1`
   color: ${(props) => props.theme.text};
