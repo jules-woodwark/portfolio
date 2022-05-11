@@ -105,8 +105,10 @@ const ContactForm = ({ inputsArray }: FormProps) => {
     setButtonDisabled(false);
   };
 
-  const onSubmit: OnSubmit = async (data) => {
+  const onSubmit: OnSubmit = async (data, event) => {
+    event?.preventDefault();
     setIsSubmitting(true);
+
     const recaptchaValue = recaptchaRef.current?.getValue();
 
     if (recaptchaValue) {
@@ -123,7 +125,6 @@ const ContactForm = ({ inputsArray }: FormProps) => {
 
         if (response.ok) {
           showAlert('success', 'Form submitted successfully!');
-          recaptchaRef.current?.reset();
           setButtonDisabled(true);
           reset();
         }
@@ -133,6 +134,8 @@ const ContactForm = ({ inputsArray }: FormProps) => {
     } else {
       showAlert('warning', 'Complete ReCaptcha!');
     }
+
+    recaptchaRef.current?.reset();
     setIsSubmitting(false);
   };
 

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { Effect, Place } from 'react-tooltip';
+import { SubmitHandler, FieldValues } from 'react-hook-form';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { UseFormReturn } from 'react-hook-form';
 import * as prismicT from '@prismicio/types';
@@ -43,7 +43,7 @@ export type ValidateForm = (
   inputsTouchedArr: boolean[]
 ) => boolean;
 
-export type OnSubmit = (token: { [x: string]: any }) => void;
+export type OnSubmit = SubmitHandler<FieldValues>;
 
 export type OnVerifyCaptcha = () => void;
 
