@@ -11,6 +11,8 @@ import Input from './UI/Input';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Spinner from './UI/Spinner';
 
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+
 const StyledForm = styled.form`
   background-color: ${(props) => props.theme.formBackground};
   border-radius: 14px;
@@ -160,7 +162,7 @@ const ContactForm = ({ inputsArray }: FormProps) => {
           <ReCAPTCHA
             id="recaptcha-google"
             ref={recaptchaRef}
-            sitekey={process.env.SITE_RECAPTCHA_KEY!}
+            sitekey={RECAPTCHA_KEY!}
             theme={captchaTheme}
             onChange={recaptchaChangeHandler}
           />
