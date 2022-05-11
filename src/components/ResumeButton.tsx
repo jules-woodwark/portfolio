@@ -53,18 +53,15 @@ const StyledResumeButton = styled(StyledButton)<ResumeButtonProps>`
 
 const ResumeButton = ({ contextType }: ResumeButtonProps) => {
   const uiCtx = useContext(UiContext);
-  const { toggleResume, navIsSolid } = uiCtx;
+  const { toggleResume, sideDrawerIsShown, toggleSideDrawer } = uiCtx;
 
   const handleClick = () => {
+    sideDrawerIsShown && toggleSideDrawer();
     toggleResume();
   };
 
   return (
-    <StyledResumeButton
-      navIsSolid
-      onClick={handleClick}
-      contextType={contextType}
-    >
+    <StyledResumeButton onClick={handleClick} contextType={contextType}>
       CV
     </StyledResumeButton>
   );
