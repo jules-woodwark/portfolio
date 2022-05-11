@@ -110,6 +110,7 @@ const ContactForm = ({ inputsArray }: FormProps) => {
     const recaptchaValue = recaptchaRef.current?.getValue();
 
     if (recaptchaValue) {
+      console.log(data);
       try {
         const response = await fetch('/', {
           method: 'POST',
