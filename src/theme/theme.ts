@@ -32,9 +32,9 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  alertErrorColor: '#292929',
-  alertSuccessColor: '#292929',
-  alertWarningColor: '#292929',
+  alertErrorColor: '#FF4D5A',
+  alertSuccessColor: '#40F384',
+  alertWarningColor: '#00AEFF',
   body: '#292929',
   borderColor: '#FAFAFA',
   buttonBackground: '#292929',
