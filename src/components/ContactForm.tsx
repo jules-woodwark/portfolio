@@ -160,7 +160,7 @@ const ContactForm = ({ inputsArray }: FormProps) => {
           <ReCAPTCHA
             id="recaptcha-google"
             ref={recaptchaRef}
-            sitekey={process.env.GATSBY_GOOGLE_RECAPTCHA_SITE_KEY!}
+            sitekey={process.env.SITE_RECAPTCHA_KEY!}
             theme={captchaTheme}
             onChange={recaptchaChangeHandler}
           />
