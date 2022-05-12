@@ -60,6 +60,15 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-170110817-1',
+        head: true,
+        defer: true,
+        enableWebVitalsTracking: true,
+      }
+    },
+    {
       resolve: `gatsby-plugin-portal`,
       options: {
         key: 'modal',
