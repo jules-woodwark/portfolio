@@ -1,4 +1,8 @@
+![My Website Logo](https://github.com/jules-woodwark/portfolio/blob/main/src/media/images/icon.svg?raw=true)
+
 # My Portfolio
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/11669a04-1a3a-4f8e-8a87-3c44fa3566b3/deploy-status)](https://app.netlify.com/sites/juleswoodwarkdev/deploys)
 
 My personal website, built with GatsbyJS, Prismic CMS & TypeScript.
 
