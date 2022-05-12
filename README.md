@@ -1,14 +1,21 @@
-![My Website Logo](https://github.com/jules-woodwark/portfolio/blob/main/src/media/images/icon.svg?raw=true)
+<p align="center">
+  <img src="https://github.com/jules-woodwark/portfolio/blob/main/src/media/images/icon.svg" alt="My Website Logo" width="50"/>
+</p>
 
-# My Portfolio
+<h1 align="center">My Portfolio</h1>
+
+<p align="center">
+  My personal website, built with GatsbyJS, Prismic CMS & TypeScript.
+</p>
+
+<p align="center">
+  <a href="https://jules-woodwark.dev/">Go to Live Application</a>
+</p>
+
+## Index
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/11669a04-1a3a-4f8e-8a87-3c44fa3566b3/deploy-status)](https://app.netlify.com/sites/juleswoodwarkdev/deploys)
 
-My personal website, built with GatsbyJS, Prismic CMS & TypeScript.
-
-[Go to Live Application](https://jules-woodwark.dev/)
-
-## Index
 
   - [Project Overview](#project-overview)
   - [Installation](#installation)
@@ -40,7 +47,7 @@ Start the gatsby development server (default access via localhost:8000):
 
     $ gatsby develop
 
-## Further Development/In the Pipeline
+## Further Development
 
 - Add Jest & Enzyme and create unit tests.
 - Improve performance with useCallback() & useMemo().
