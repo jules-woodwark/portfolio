@@ -1,4 +1,4 @@
-![My Website Logo](https://github.com/jules-woodwark/portfolio/blob/main/src/media/images/icon.svg?raw=true)
+<img src="https://github.com/jules-woodwark/portfolio/blob/main/src/media/images/icon.svg" alt="My Website Logo" width="200"/>
 
 # My Portfolio
 
