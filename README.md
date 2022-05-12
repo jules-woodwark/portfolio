@@ -1,4 +1,4 @@
-<img src="https://github.com/jules-woodwark/portfolio/blob/main/src/media/images/icon.svg" alt="My Website Logo" width="200"/>
+<img src="https://github.com/jules-woodwark/portfolio/blob/main/src/media/images/icon.svg" alt="My Website Logo" width="100"/>
 
 # My Portfolio
 
