@@ -4,9 +4,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Portfolio`,
+    title: `Jules Woodwark`,
     description: "Jules Woodwark's portfolio website",
-    titleTemplate: '%s - Jules Woodwark',
+    titleTemplate: '',
     url: `https://www.juleswoodwark.dev`,
     image: './public/static/favicon.png',
   },

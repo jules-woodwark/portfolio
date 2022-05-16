@@ -13,7 +13,7 @@ export const lightTheme = {
   cardBoxShadow:
     'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
   cardImageFilter: 'none',
-  fontWeight: '600',
+  fontWeight: '400',
   formBackground: 'rgba(255, 255, 255, 0.5)',
   heroSubTitleBackground: 'linear-gradient(56deg, #B577C9, #005B8F)',
   iconBackgroundColor: '#2F4858',
