@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://jules-woodwark.dev/">Go to Live Application</a>
+  <a href="https://juleswoodwark.dev/">Go to Live Application</a>
 </p>
 
 ## Index
@@ -29,7 +29,7 @@ I decided to use Prismic to gain some experience with a headless CMS, and the ab
 
 ## Installation
 
-View the application live [here](https://jules-woodwark.dev/)
+View the application live [here](https://juleswoodwark.dev/)
 
 To clone the repo:
 
